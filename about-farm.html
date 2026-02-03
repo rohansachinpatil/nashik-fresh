@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Laxmi Farms - Premium Grape Growers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7b1fa2;
+            --secondary: #4a148c;
+            --accent: #ab47bc;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -5s;
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            display: block;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .nav-links a.active {
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 5% 4rem;
+            position: relative;
+        }
+
+        .farm-logo {
+            max-width: 250px;
+            margin: 0 auto 2rem;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Varieties Grid */
+        .varieties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .variety-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .variety-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .variety-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .variety-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .variety-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-year {
+            font-size: 2rem;
+            font-weight: 700;
+            min-width: 120px;
+            color: var(--accent);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .contact-card a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-year {
+                min-width: auto;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 5%;
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <nav>
+        <div class="logo">Nashik<br><span>Fresh</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="about-farm.html" class="active">About Farm</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="menu-icon"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="C:/Users/preet/.gemini/antigravity/brain/35e0cb18-9144-4bd6-bae5-848cda712e28/uploaded_media_1770023842425.png"
+            alt="Laxmi Farms Logo" class="farm-logo">
+        <h1>Welcome to Laxmi Farms</h1>
+        <p>Three generations of passion, dedication, and expertise in cultivating the finest grapes in Nashik. Where
+            tradition meets innovation.</p>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="section">
+        <h2 class="section-title">Our Heritage</h2>
+        <div class="glass-card">
+            <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95;">
+                Founded in 1975, Laxmi Farms has been at the forefront of grape cultivation in the Nashik region. What
+                started as a small family vineyard has grown into one of the most respected farms in Maharashtra. Our
+                commitment to quality, sustainable farming practices, and innovation has made us a trusted name among
+                grape connoisseurs across India.
+            </p>
+        </div>
+        <div class="glass-card">
+            <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95;">
+                Named after Goddess Laxmi, our farm embodies prosperity, purity, and abundance. Every grape that leaves
+                our vineyard is a testament to our family's dedication and the rich soil of Nashik. We believe in
+                farm-to-home freshness, ensuring that you receive the finest produce within 24 hours of harvest.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <h2 class="section-title">Our Impact</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-seedling stat-icon"></i>
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Acres of Vineyard</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-award stat-icon"></i>
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Awards Won</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users stat-icon"></i>
+                <span class="stat-number">10,000+</span>
+                <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-leaf stat-icon"></i>
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Organic Practices</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grape Varieties -->
+    <section class="section">
+        <h2 class="section-title">Our Premium Varieties</h2>
+        <div class="varieties-grid">
+            <div class="variety-card">
+                <i class="fas fa-circle" style="color: #7b1fa2;"></i>
+                <h3>Sharad Seedless</h3>
+                <p>Our signature variety - premium black seedless grapes known for exceptional sweetness and crunch.</p>
+            </div>
+            <div class="variety-card">
+                <i class="fas fa-circle" style="color: #66bb6a;"></i>
+                <h3>Thompson Seedless</h3>
+                <p>Classic green grapes with perfect sweet-tart balance and thin skin.</p>
+            </div>
+            <div class="variety-card">
+                <i class="fas fa-circle" style="color: #9ccc65;"></i>
+                <h3>Manik Chaman</h3>
+                <p>Elongated green grapes with golden glow, extra crunchy and naturally sweet.</p>
+            </div>
+            <div class="variety-card">
+                <i class="fas fa-circle" style="color: #7cb342;"></i>
+                <h3>Sonaka</h3>
+                <p>Long cylindrical grapes with thin skin and incredibly sweet juice.</p>
+            </div>
+            <div class="variety-card">
+                <i class="fas fa-circle" style="color: #e53935;"></i>
+                <h3>Red Globe</h3>
+                <p>Large, meaty grapes with minimal seeds and maximum flavor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section">
+        <h2 class="section-title">Our Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">1975</div>
+                <div class="timeline-content">
+                    <h3>The Beginning</h3>
+                    <p>Laxmi Farms was established with just 5 acres of land and a vision to grow the finest grapes in
+                        Nashik.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1995</div>
+                <div class="timeline-content">
+                    <h3>Expansion Era</h3>
+                    <p>Expanded to 30 acres and introduced modern drip irrigation systems, setting new standards for
+                        sustainable farming.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2010</div>
+                <div class="timeline-content">
+                    <h3>Organic Certification</h3>
+                    <p>Achieved 100% organic certification and won the "Best Organic Farm" award from Maharashtra
+                        Agriculture Department.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2020</div>
+                <div class="timeline-content">
+                    <h3>Digital Transformation</h3>
+                    <p>Launched direct farm-to-home delivery service, bringing fresh grapes to customers within 24 hours
+                        of harvest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Farming Practices -->
+    <section class="section">
+        <h2 class="section-title">Our Farming Philosophy</h2>
+        <div class="varieties-grid">
+            <div class="variety-card">
+                <i class="fas fa-tint" style="color: #42a5f5;"></i>
+                <h3>Water Conservation</h3>
+                <p>Advanced drip irrigation systems ensure minimal water wastage while maximizing crop health.</p>
+            </div>
+            <div class="variety-card">
+                <i class="fas fa-recycle" style="color: #66bb6a;"></i>
+                <h3>Zero Waste</h3>
+                <p>All farm waste is composted and returned to the soil, creating a sustainable ecosystem.</p>
+            </div>
+            <div class="variety-card">
+                <i class="fas fa-sun" style="color: #ffa726;"></i>
+                <h3>Solar Powered</h3>
+                <p>100% of our farm operations are powered by renewable solar energy.</p>
+            </div>
+            <div class="variety-card">
+                <i class="fas fa-hands-helping" style="color: #ab47bc;"></i>
+                <h3>Community First</h3>
+                <p>We provide fair wages and skill training to all our farm workers and their families.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <h2 class="section-title">Visit Us</h2>
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>Village Pimpalgaon, Nashik District<br>Maharashtra 422003, India</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                <p><a href="tel:+919876543211">+91 98765 43211</a></p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:info@laxmifarms.com">info@laxmifarms.com</a></p>
+                <p><a href="mailto:orders@laxmifarms.com">orders@laxmifarms.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Laxmi Farms. All rights reserved. | Fresh from our vines to your home.</p>
+    </footer>
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.glass-card, .stat-card, .variety-card, .timeline-item, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
